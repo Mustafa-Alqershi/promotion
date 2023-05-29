@@ -14,10 +14,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: Text('الصندوق',
-        style: TextStyle(
-          fontFamily: 'NotoKufiArabic',
-        )),
+        title: const Text('الصندوق',
+            style: TextStyle(
+              fontFamily: 'NotoKufiArabic',
+            )),
         centerTitle: true,
         actions: [
           Padding(
@@ -38,12 +38,12 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       backgroundColor: Colors.indigo.shade900,
-                      content: TextField(
+                      content: const TextField(
                         textAlign: TextAlign.right,
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontFamily: 'NotoKufiArabic', color: Colors.white),
                         // controller: _searchController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: 'ادخل للبحث',
                           hintStyle: TextStyle(
                             color: Colors.white,
@@ -89,7 +89,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
-
         backgroundColor: Colors.blue.shade900,
       ),
       body: SingleChildScrollView(
@@ -98,12 +97,12 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: BigText(text: 'القطاعات'),
-                )]),
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: BigText(text: 'القطاعات'),
+              )
+            ]),
             const SizedBox(
               height: 5,
             ),
@@ -316,7 +315,6 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -338,8 +336,8 @@ class HomePage extends StatelessWidget {
           // margin: const EdgeInsets.symmetric(horizontal: 10),
           width: 100,
           height: 90,
-          decoration:  BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
               color: Colors.blue.shade900),
           child: Stack(
             alignment: Alignment.bottomCenter,
@@ -354,7 +352,9 @@ class HomePage extends StatelessWidget {
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20,),
+                        topRight: Radius.circular(
+                          20,
+                        ),
                         bottomLeft: Radius.circular(50),
                         bottomRight: Radius.circular(50)),
                     image: DecorationImage(
@@ -369,8 +369,6 @@ class HomePage extends StatelessWidget {
                 left: 0,
                 right: 9,
                 child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   children: [
                     const Spacer(),
                     Column(
@@ -395,192 +393,13 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    // Container(
-                    //   alignment: AlignmentDirectional.center,
-                    //   margin:
-                    //   const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    //   width: 30,
-                    //   height: 30,
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.circular(10),
-                    //
-                    //     color: Colors.blue,
-                    //     border: Border.all(color: Colors.grey),
-                    //     shape: BoxShape.rectangle,
-                    //   ),
-                    //   child: ClipRRect(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //
-                    //       child:
-                    //
-                    //       SmallText(text: 'ق', color: Colors.white),
-                    //   )
-                    //
-                    //     // Image.asset(
-                    //       //   'assets/images/food1.jpg',
-                    //       //   fit: BoxFit.cover,
-                    //       // )),
-                    // ),
                   ],
                 ),
               ),
-              // Positioned(
-              //     left: 10,
-              //     bottom: 10,
-              //     child: Container(
-              //       padding:
-              //       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(10),
-              //         color: Colors.blue,
-              //       ),
-              //       child:
-              //       SmallText(text: 'تصفح الان', color: Colors.white),
-              //     )),
             ],
           ),
         ),
       ),
     );
   }
-
-  // Widget storeCardBig() {
-  //   return Container(
-  //
-  //     margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-  //     child: Card(
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(15.0),
-  //       ),        // radius: 10,
-  //       borderOnForeground: true,
-  //       child: Container(
-  //         // margin: const EdgeInsets.symmetric(horizontal: 10),
-  //         width: double.infinity,
-  //         height: 255,
-  //         decoration: BoxDecoration(
-  //           color: Colors.white60,
-  //           borderRadius: BorderRadius.circular(20),
-  //         ),
-  //         child: Stack(
-  //           alignment: Alignment.bottomCenter,
-  //           children: [
-  //             Positioned(
-  //               top: 0,
-  //               right: 0,
-  //               left: 0,
-  //               child: Container(
-  //                 width: 300,
-  //                 height: 190,
-  //                 decoration: const BoxDecoration(
-  //                   borderRadius: BorderRadius.only(
-  //                       topLeft: Radius.circular(15),
-  //                       topRight: Radius.circular(15)),
-  //                   image: DecorationImage(
-  //                     image: AssetImage('assets/order2.png'),
-  //                     fit: BoxFit.cover,
-  //                   ),
-  //                 ),
-  //               ),
-  //             ),
-  //             Positioned(
-  //               bottom: 5,
-  //               left: 0,
-  //               right: 0,
-  //               child: Row(
-  //                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //                 children: [
-  //                   const SizedBox(
-  //                     width: 10,
-  //                   ),
-  //                   Column(
-  //                     children: [
-  //                       Row(children: [
-  //                         Row(
-  //                             crossAxisAlignment: CrossAxisAlignment.center,
-  //                             children: [
-  //                               SmallText(text: 'كم ', color: Colors.black),
-  //                               const SizedBox(
-  //                                 width: 5,
-  //                               ),
-  //                               SmallText(text: '5', color: Colors.black),
-  //                               const SizedBox(
-  //                                 width: 5,
-  //                               ),
-  //                               const Icon(
-  //                                 Icons.star,
-  //                                 color: Colors.yellow,
-  //                                 size: 20,
-  //                               ),
-  //                               const SizedBox(
-  //                                 width: 5,
-  //                               ),
-  //                               SmallText(text: '4.5', color: Colors.black),
-  //                             ]),
-  //                         const SizedBox(
-  //                           width: 10,
-  //                         ),
-  //                         // Text('حلويات'),
-  //                       ]),
-  //                     ],
-  //                   ),
-  //                   const Spacer(),
-  //                   Column(
-  //                     children: [
-  //                       BigText(text: 'الطرق'),
-  //                       const SizedBox(
-  //                         height: 5,
-  //                       ),
-  //                     ],
-  //                   ),
-  //                   const SizedBox(
-  //                     width: 15,
-  //                     height: 0,
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //             Positioned(
-  //               right: 10,
-  //               bottom: 30,
-  //               child: Container(
-  //                 margin:
-  //                 const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-  //                 width: 50,
-  //                 height: 50,
-  //                 decoration:  BoxDecoration(
-  //                   // borderRadius: BorderRadius.circular(10),
-  //                   shape: BoxShape.circle,
-  //                   color: Colors.white,
-  //                   border: Border.all(color: Colors.grey),
-  //
-  //                 ),
-  //                 child: ClipRRect(
-  //                     borderRadius: BorderRadius.circular(20.0),
-  //
-  //
-  //                     child: Image.asset(
-  //                       'assets/food1.jpg',
-  //                       fit: BoxFit.cover,
-  //                     )),
-  //               ),
-  //             ),
-  //             Positioned(
-  //                 left: 5,
-  //                 bottom: 30,
-  //                 child: Container(
-  //                   padding:
-  //                   const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-  //                   decoration: BoxDecoration(
-  //                     borderRadius: BorderRadius.circular(10),
-  //                     color: Colors.blue.shade300,
-  //                   ),
-  //                   child:
-  //                   SmallText(text: 'توصيل 200 ريال ', color: Colors.white),
-  //                 )),
-  //           ],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 }
