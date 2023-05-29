@@ -66,20 +66,35 @@ class HomePage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              MediumText(text: 'مطعم الشيف'),
-              Text('مطعم الشيف'),
+              Text('مطعم الشيف',
+              style: TextStyle(
+                color: Colors.blue.shade900,
+                fontFamily: 'NotoKufiArabic',
+              )),
               Row(children: [
                 const SizedBox(
                   height: 5,
                 ),
                 Row(children: [
-                  SmallText(text: 'كم ', color: Colors.black),
-                  SmallText(text: '2.57 ', color: Colors.black),
-                  const SizedBox(
+                  Text('مطعم الشيف',
+                      style: TextStyle(
+                        color: Colors.blue.shade900,
+                        fontFamily: 'NotoKufiArabic',
+                      )),
+                  Text('مطعم الشيف',
+                      style: TextStyle(
+                        color: Colors.blue.shade900,
+                        fontFamily: 'NotoKufiArabic',
+                      )),
+
+                            const SizedBox(
                     width: 5,
                   ),
-                  SmallText(text: '4.5', color: Colors.black),
-                  const SizedBox(
+                  Text('مطعم الشيف',
+                      style: TextStyle(
+                        color: Colors.blue.shade900,
+                        fontFamily: 'NotoKufiArabic',
+                      )),                  const SizedBox(
                     width: 5,
                   ),
                   const Icon(
@@ -104,8 +119,12 @@ class HomePage extends StatelessWidget {
                         color: Colors.indigo.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: SmallText(
-                          text: 'يبدء العمل في 10 ص ', color: Colors.white)),
+                      child:   Text('مطعم الشيف',
+                          style: TextStyle(
+                            color: Colors.blue.shade900,
+                            fontFamily: 'NotoKufiArabic',
+                          )),
+                  )
                 ],
               ),
             ],
