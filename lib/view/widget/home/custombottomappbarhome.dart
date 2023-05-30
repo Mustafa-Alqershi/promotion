@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../screen/home.dart';
+import '../../screen/sector_screen.dart';
 abstract class HomeScreenController extends GetxController {
   changePage(int currentpage);
 }
@@ -12,7 +13,7 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List<Widget> listPage = [
      HomePage(),
-    HomePage() ,
+    SectorScreen() ,
     const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text("Profile"))],
@@ -23,7 +24,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   List bottomappbar = [
 
     {"title": "n", "icon": Icons.notifications_active_outlined},
-    {"title": "profile", "icon": Icons.person_pin_sharp},
+    {"title": "القطاعات", "icon": Icons.person_pin_sharp},
     {"title": "settings", "icon": Icons.settings},
     {"title": "home", "icon": Icons.home},
   ];
