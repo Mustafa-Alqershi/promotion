@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promotion/controller/project_controller.dart';
+import 'package:promotion/core/localization/changelocal.dart';
 import 'package:promotion/view/screen/project_screen.dart';
 
 import '../../controller/field_controller.dart';
@@ -39,10 +40,10 @@ class HomePage extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: const Text(
-                        'بحث',
+                      title:  Text(
+                        '5'.tr,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'NotoKufiArabic',
                           color: Colors.white,
                         ),
@@ -64,10 +65,10 @@ class HomePage extends StatelessWidget {
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child: const Text(
-                            'الغاء',
+                          child:  Text(
+                            '6'.tr,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: 'NotoKufiArabic',
                                 color: Colors.white),
                           ),
@@ -76,10 +77,10 @@ class HomePage extends StatelessWidget {
                           },
                         ),
                         TextButton(
-                          child: const Text(
-                            'بحث',
+                          child:  Text(
+                            '5'.tr,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontFamily: 'NotoKufiArabic',
                                 color: Colors.white),
                           ),
@@ -104,10 +105,17 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            IconButton(
+                onPressed: () {
+                  Get.find<LocaleController>().changeLang('ar');
+                },
+                icon: const Icon(Icons.language)),
+            Row(
+                // mainAxisAlignment: MainAxisAlignment.end,
+                children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: BigText(text: 'القطاعات'),
+                child: BigText(text:'2'.tr),
               )
             ]),
             const SizedBox(
@@ -129,37 +137,30 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+            const SizedBox(
+              width: 10,
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.sort_sharp,
-                          color: Colors.indigo,
-                        )),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.sort)),
-                  ],
-                ),
-                const Spacer(),
-
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: BigText(text: 'الفئات'),
+                  child: BigText(text: '3'.tr),
                 ),
-                // Text('المتاجر  ',style: TextStyle(fontFamily: 'NotoKufiArabic'),),
+                const Spacer(),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.sort_sharp,
+                      color: Colors.indigo,
+                    )),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.sort)),
               ],
             ),
             Container(
               height: 150,
               width: double.infinity,
-              child:
-              GetBuilder<FieldController>(builder: (controller) {
+              child: GetBuilder<FieldController>(builder: (controller) {
                 return ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: controller.fields.length,
@@ -170,26 +171,23 @@ class HomePage extends StatelessWidget {
               }),
             ),
             Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height * 0.49,
+              height: MediaQuery.of(context).size.height * 0.49,
               child: GetBuilder<ProjectController>(builder: (controller) {
-                if(controller.isLoading){
-                  return Center(child: CircularProgressIndicator(),);
+                if (controller.isLoading) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListView.builder(
+                      itemCount: controller.projects.data.projects.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
+                        Project project =
+                            controller.projects.data.projects[index];
+                        return projectCardSmall(project);
+                        // storeCartBig();
+                      });
                 }
-                else{
-                  return
-                    ListView.builder(
-                        itemCount: controller.projects.data.projects.length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          Project project=controller.projects.data.projects[index];
-                          return projectCardSmall(project);
-                          // storeCartBig();
-                        });
-                }
-
               }),
             ),
           ],
@@ -205,8 +203,20 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          const Spacer(),
-
+          // const Spacer(),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            width: 90,
+            height: 90,
+            decoration: const BoxDecoration(
+              // borderRadius: BorderRadius.circular(10),
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: AssetImage('assets/sfd.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -248,7 +258,7 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: SmallText(
-                          text:project.area.name, color: Colors.white)),
+                          text: project.area.name, color: Colors.white)),
                 ],
               ),
             ],
@@ -259,19 +269,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            width: 90,
-            height: 90,
-            decoration: const BoxDecoration(
-              // borderRadius: BorderRadius.circular(10),
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage('assets/sfd.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+
         ],
       ),
     );
@@ -281,7 +279,9 @@ class HomePage extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.find<ProjectController>().getProjectsBySector(sector.id);
-        Get.to(() => ProjectScreen(sector: sector.name,));
+        Get.to(() => ProjectScreen(
+              sector: sector.name,
+            ));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
@@ -304,6 +304,7 @@ class HomePage extends StatelessWidget {
                   top: 0,
                   right: 0,
                   left: 0,
+
                   child: Container(
                     width: 300,
                     height: 140,
@@ -322,13 +323,12 @@ class HomePage extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 10,
-                  left: 0,
-                  right: 60,
+                // top:0,
                   child: Row(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-                      const Spacer(),
+                      // const Spacer(),
                       Column(
                         children: [
                           Container(
@@ -339,10 +339,9 @@ class HomePage extends StatelessWidget {
                               shape: BoxShape.rectangle,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 80),
-                              child:
-                              MediumText(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 80),
+                              child: MediumText(
                                   text: sector.name, color: Colors.white),
                             ),
                           )
@@ -400,11 +399,10 @@ class HomePage extends StatelessWidget {
               ),
               Positioned(
                 bottom: 10,
-                left: 0,
-                right: 9,
+                // left: 0,
+                // right: 9,
                 child: Row(
                   children: [
-                    const Spacer(),
                     Column(
                       children: [
                         Container(
@@ -416,10 +414,10 @@ class HomePage extends StatelessWidget {
                             shape: BoxShape.rectangle,
                           ),
                           child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
                               child: Text(
                                 field.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontFamily: 'NotoKufiArabic',
                                     fontSize: 15),

@@ -84,12 +84,11 @@ class SectorScreen extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 10,
-                    left: 30,
-                    right: 30,
+                   
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Spacer(),
+                        // const Spacer(),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [

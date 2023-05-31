@@ -4,12 +4,13 @@ class MyTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         "ar": {
-          "1": "اختر اللغة",
-          "2": "اختر المنتجة",
-          "3": "نحن لدينا 100 الف منتج  , اختر \n  منتجك  من  متجرنا",
-          "4": "سهل وامن للشراء",
-          "5": "يمكنك الدفع كاش او \n من خلال بوابات الدفع الالكترونية",
-          "6": "تتبع طلبك",
+          "1": "تسجيل دخول",
+          "2": "القطاعات",
+          "3": "الفئات",
+          "4": "المشاريع",
+          "5": "بحث",
+          "6": "إلغاء",
+
           "7": "يمكنك تتبع طلبك في كل مرحلة \n وايضا التتبع من خلال الخريطة",
           "8": "متابعه",
           "9": "تسجيل الدخول",
@@ -28,8 +29,7 @@ class MyTranslation extends Translations {
           "21": "رقم الهاتف",
           "22": "ادخل رقم الهاتف",
           "23": "ادخل اسم المستخدم",
-          "24":
-              "انشاء حساب من خلال البريد وكلمة المرور او من خلال وسائل التواصل الاجتماعي",
+          "24": "انشاء حساب من خلال البريد وكلمة المرور او من خلال وسائل التواصل الاجتماعي",
           "25": " لديك حساب ? ",
           "26": "تسجيل الدخول",
           "27": "فحص البريد الالكتروني",
@@ -46,20 +46,17 @@ class MyTranslation extends Translations {
           "38": "تم التسجيل بنجاح"
         },
         "en": {
-          "1": "Choose Language",
-          "2": "Choose Product",
-          "3":
-              "We Have a 100k Product , Choose \n Your Product From  Our \n E-commerce Shop",
-          "4": "Easy And Safe Paymnet",
-          "5": "You can pay in cash \n or through payment gateways",
-          "6": "Track Your Order",
-          "7":
-              "The order can be tracked at every stage \n until it reaches you",
+          "1": "Login",
+          "2": "Sector",
+          "3": "Field",
+          "4": "Projects",
+          "5": "Search",
+          "6": "Cancel",
+          "7": "The order can be tracked at every stage \n until it reaches you",
           "8": "Continue",
           "9": "Sign In",
           "10": "Welcome Back",
-          "11":
-              "Sign In Your Email And Password Or  Continue With Social Media",
+          "11": "Sign In Your Email And Password Or  Continue With Social Media",
           "12": "Enter Your Email",
           "13": "Enter Your Password",
           "14": "Forget Password",

@@ -14,6 +14,7 @@ class LocaleController extends GetxController {
 
   ThemeData appTheme = themeEnglish;
   changeLang(String langcode) {
+    print('locale is $langcode');
     Locale locale = Locale(langcode);
     GetStorage().write('lang',langcode);
     // myServices.sharedPreferences.setString("lang", langcode);
