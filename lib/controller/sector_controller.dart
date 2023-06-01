@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
 import '../http_client.dart';
 import '../model/projectModel.dart';
-
 
 class SectorController extends GetxController {
   late List<Sector> _sectors = [];

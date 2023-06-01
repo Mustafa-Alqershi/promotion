@@ -114,7 +114,7 @@ Widget storeCardSmall(Project project) {
         //             padding: const EdgeInsets.symmetric(
         //                 horizontal: 5, vertical: 5),
         //             decoration: BoxDecoration(
-        //               color: Colors.indigo.withOpacity(0.5),
+        //               color: Colors.blue.withOpacity(0.5),
         //               borderRadius: BorderRadius.circular(10),
         //             ),
         //             // child: SmallText(

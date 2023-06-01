@@ -6,7 +6,8 @@ ThemeData themeEnglish = ThemeData(
   fontFamily: "PlayfairDisplay",
   floatingActionButtonTheme:
       const FloatingActionButtonThemeData(backgroundColor: AppColor.primaryColor),
-  appBarTheme: const AppBarTheme(
+  appBarTheme:  AppBarTheme(
+
     centerTitle: true,
     elevation: 0,
     iconTheme: IconThemeData(color: AppColor.primaryColor),
@@ -15,7 +16,7 @@ ThemeData themeEnglish = ThemeData(
         fontWeight: FontWeight.bold,
         fontFamily: "PlayfairDisplay",
         fontSize: 25),
-    backgroundColor: Colors.indigoAccent,
+    backgroundColor: Colors.blue.shade900,
   ),
   textTheme:  const TextTheme(
       displayLarge: TextStyle(

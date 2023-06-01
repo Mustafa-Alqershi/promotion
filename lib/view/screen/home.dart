@@ -1,4 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promotion/controller/project_controller.dart';
@@ -12,6 +13,7 @@ import '../../model/projectModel.dart';
 import '../../widgets/text/big_text.dart';
 import '../../widgets/text/medium_text.dart';
 import '../../widgets/text/small_text.dart';
+import 'area.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title:  Text(
+                      title: Text(
                         '5'.tr,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
@@ -48,14 +50,14 @@ class HomePage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      backgroundColor: Colors.indigo.shade900,
+                      backgroundColor: Colors.blue.shade900,
                       content: TextField(
                         controller: sectorController.searchController,
                         textAlign: TextAlign.right,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontFamily: 'NotoKufiArabic', color: Colors.white),
                         // controller: _searchController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'ادخل للبحث',
                           hintStyle: TextStyle(
                             color: Colors.white,
@@ -65,7 +67,7 @@ class HomePage extends StatelessWidget {
                       ),
                       actions: <Widget>[
                         TextButton(
-                          child:  Text(
+                          child: Text(
                             '6'.tr,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
@@ -77,7 +79,7 @@ class HomePage extends StatelessWidget {
                           },
                         ),
                         TextButton(
-                          child:  Text(
+                          child: Text(
                             '5'.tr,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
@@ -105,19 +107,19 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            IconButton(
-                onPressed: () {
-                  Get.find<LocaleController>().changeLang('ar');
-                },
-                icon: const Icon(Icons.language)),
+            // IconButton(
+            //     onPressed: () {
+            //       Get.find<LocaleController>().changeLang('ar');
+            //     },
+            //     icon: const Icon(Icons.language)),
             Row(
                 // mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: BigText(text:'2'.tr),
-              )
-            ]),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: BigText(text: '2'.tr),
+                  )
+                ]),
             const SizedBox(
               height: 5,
             ),
@@ -152,13 +154,13 @@ class HomePage extends StatelessWidget {
                     onPressed: () {},
                     icon: const Icon(
                       Icons.sort_sharp,
-                      color: Colors.indigo,
+                      color: Colors.blue,
                     )),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.sort)),
+
               ],
             ),
             Container(
-              height: 150,
+              height: 135,
               width: double.infinity,
               child: GetBuilder<FieldController>(builder: (controller) {
                 return ListView.builder(
@@ -174,7 +176,7 @@ class HomePage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.49,
               child: GetBuilder<ProjectController>(builder: (controller) {
                 if (controller.isLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
@@ -206,11 +208,16 @@ class HomePage extends StatelessWidget {
           // const Spacer(),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            width: 90,
-            height: 90,
+            width: 80,
+            height: 100,
             decoration: const BoxDecoration(
-              // borderRadius: BorderRadius.circular(10),
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(
+                    50,
+                  ),
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(50)),
               image: DecorationImage(
                 image: AssetImage('assets/sfd.jpg'),
                 fit: BoxFit.cover,
@@ -221,55 +228,59 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               MediumText(text: project.name),
-              Row(children: [
-                const SizedBox(
-                  height: 5,
-                ),
-                Row(children: [
-                  // SmallText(text: 'كم ', color: Colors.black),
-                  // SmallText(text: '2.57 ', color: Colors.black),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  // SmallText(text: '4.5', color: Colors.black),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  // const Icon(
-                  //   Icons.star,
-                  //   color: Colors.yellow,
-                  //   size: 18,
-                  // ),
-                ]),
-                const SizedBox(
-                  width: 0,
-                ),
-              ]),
-              const SizedBox(
-                height: 5,
-              ),
               Row(
                 children: [
                   Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 5, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.indigo.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(10),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade900,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Get.to(() => area());
+                      },
+                      child: Text(
+                        project.area.name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'NotoKufiArabic',
+                        ),
                       ),
-                      child: SmallText(
-                          text: project.area.name, color: Colors.white)),
+                    ),
+                  )
                 ],
               ),
             ],
           ),
-          // IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border)),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade900,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child:IconButton(
+                      icon:  Icon(Icons.menu_open,
+                          size: 30,color: Colors.blue.shade900),
+                      onPressed: () {
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
 
-          // const SizedBox(width: 10,),
           const SizedBox(
             width: 10,
           ),
-
         ],
       ),
     );
@@ -304,7 +315,6 @@ class HomePage extends StatelessWidget {
                   top: 0,
                   right: 0,
                   left: 0,
-
                   child: Container(
                     width: 300,
                     height: 140,
@@ -323,7 +333,7 @@ class HomePage extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 10,
-                // top:0,
+                  // top:0,
                   child: Row(
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -335,7 +345,6 @@ class HomePage extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.blue.shade900,
-                              // border: Border.all(color: Colors.grey),
                               shape: BoxShape.rectangle,
                             ),
                             child: Padding(
@@ -363,15 +372,14 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(100.0),
         ),
         child: Container(
-          // margin: const EdgeInsets.symmetric(horizontal: 10),
           width: 100,
-          height: 90,
+          height: 200,
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Colors.blue.shade900),
+              color: Colors.grey.shade200),
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
@@ -384,9 +392,9 @@ class HomePage extends StatelessWidget {
                   height: 90,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
+                        topLeft: Radius.circular(50),
                         topRight: Radius.circular(
-                          20,
+                          50,
                         ),
                         bottomLeft: Radius.circular(50),
                         bottomRight: Radius.circular(50)),
@@ -398,30 +406,25 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: 10,
-                // left: 0,
-                // right: 9,
+                bottom: 0,
                 child: Row(
                   children: [
                     Column(
                       children: [
                         Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-
-                            color: Colors.blue.shade700,
-                            // border: Border.all(color: Colors.grey),
-                            shape: BoxShape.rectangle,
-                          ),
                           child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: TextButton(
+                              onPressed: () {},
                               child: Text(
                                 field.name,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'NotoKufiArabic',
-                                    fontSize: 15),
-                              )),
+                                style: TextStyle(
+                                  color: Colors.blue.shade900,
+                                  fontFamily: 'NotoKufiArabic',
+                                ),
+                              ),
+                            ),
+                          ),
                         )
                       ],
                     ),

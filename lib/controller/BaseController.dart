@@ -16,7 +16,7 @@ mixin BaseController {
 //         await Future.delayed(const Duration(seconds: 10));
 //         _dialog.hide();
   void showLoading() {
-    // _dialog.show(message: 'يرجى الانتظار',type:SimpleFontelicoProgressDialogType.multiHurricane,horizontal: true,width: 150,indicatorColor: Colors.indigo.shade900);
+    // _dialog.show(message: 'يرجى الانتظار',type:SimpleFontelicoProgressDialogType.multiHurricane,horizontal: true,width: 150,indicatorColor: Colors.blue.shade900);
     Get.dialog(
       Dialog(
         insetPadding: const EdgeInsets.symmetric(horizontal: 80),
