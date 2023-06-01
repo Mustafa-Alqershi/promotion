@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -254,18 +253,14 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(width:150,),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Row(
                 children: [
                   Container(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade900,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
+
                     child:IconButton(
                       icon:  Icon(Icons.menu_open,
                           size: 30,color: Colors.blue.shade900),
