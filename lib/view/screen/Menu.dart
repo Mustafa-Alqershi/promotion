@@ -119,12 +119,12 @@ class _MenuState extends State<Menu> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.settings,
+                                Icons.login,
                                 color: Colors.white,
                               ),
                               SizedBox(width: 100),
                               Text(
-                                "الاعدادات",
+                                "تسجيل الدخول",
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,

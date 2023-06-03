@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
 import '../http_client.dart';
 import 'BaseController.dart';
 
@@ -17,8 +18,7 @@ class AuthController extends GetxController with BaseController {
     isPasswordHidden = !isPasswordHidden;
     update();
   }
-  late AuthController authController;
-  AuthController({required this.authController});
+
 
 
   @override
@@ -139,8 +139,8 @@ class AuthController extends GetxController with BaseController {
     });
     isLoad = false;
     print(response.body);
-  var data=  await GetStorage().erase();
-  // print(data.toString());
+    var data=  await GetStorage().erase();
+    // print(data.toString());
 
     if (response.statusCode == 200) {}
     var token = json.decode(response.body);
