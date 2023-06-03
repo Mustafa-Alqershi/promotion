@@ -39,12 +39,8 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   const SizedBox(height: 80.0),
-                  Image.asset(
-                    'assets/logo2.png',
-                    width: 170,
-                  ),
                   Text(
-                    "حاضرين",
+                    "الصندوق",
                     style: TextStyle(
                         fontSize: 30,
                         fontFamily: 'NotoKufiArabic',

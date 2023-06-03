@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promotion/controller/project_controller.dart';
@@ -156,7 +155,6 @@ class HomePage extends StatelessWidget {
                       Icons.sort_sharp,
                       color: Colors.blue,
                     )),
-
               ],
             ),
             Container(
@@ -206,47 +204,71 @@ class HomePage extends StatelessWidget {
             width: 10,
           ),
           // const Spacer(),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            width: 80,
-            height: 100,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(
-                    50,
-                  ),
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50)),
-              image: DecorationImage(
-                image: AssetImage('assets/sfd.jpg'),
-                fit: BoxFit.cover,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              width: 80,
+              height: 80,
+              decoration: const BoxDecoration(
+                color:  Colors.blue,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(
+                      50,
+                    ),
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50)),
+                image: DecorationImage(
+                  image: AssetImage('assets/sfd.jpg'),
+                  fit: BoxFit.cover,
+                ),
               ),
+
             ),
+
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MediumText(text: project.name),
+              // MediumText(text: project.name),
+              Text(
+                project.name,
+                style:  TextStyle(
+                    color: Colors.blue.shade900,
+                    fontFamily: 'NotoKufiArabic'
+                    ,fontSize: 15
+                ),
+              ),
+              Text(
+                'تاريخ التنفيذ'+project. plan.publishData,
+                style:  TextStyle(
+                    color: Colors.blue.shade900,
+                    fontFamily: 'NotoKufiArabic'
+                    ,fontSize: 10
+                ),
+              ),
+
               Row(
                 children: [
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade900,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
+                    // padding:
+                    //     const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    // decoration: BoxDecoration(
+                    //   color: Colors.blue.shade900,
+                    //   borderRadius: BorderRadius.circular(10),
+                    // ),
                     child: TextButton(
                       onPressed: () {
-Get.find<AreaController>().getAreaById(project.area.id);
+                        Get.find<AreaController>().getAreaById(project.area.id);
                         Get.to(() => area());
                       },
                       child: Text(
-                        project.area.name,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'NotoKufiArabic',
+                      'المنطقه'+' : - '+  project.area.name,
+                        style:  TextStyle(
+                          color: Colors.blue.shade900,
+                          fontFamily: 'NotoKufiArabic'
+                          ,fontSize: 13
                         ),
                       ),
                     ),
@@ -255,19 +277,84 @@ Get.find<AreaController>().getAreaById(project.area.id);
               ),
             ],
           ),
-          SizedBox(width:10,),
+
           Spacer(),
           Column(
-            // crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Row(
                 children: [
-                  Container(
 
-                    child:IconButton(
-                      icon:  Icon(Icons.menu_open,
-                          size: 30,color: Colors.blue.shade900),
+                  Container(
+                    child: IconButton(
+                      icon: Icon(Icons.menu_open,
+                          size: 30,
+                          color: Colors.blue
+                              .shade900),
                       onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder:
+                              (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text(
+                                'المجالس',
+                                textAlign:
+                                TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily:
+                                  'NotoKufiArabic',
+                                  color: Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors
+                                  .blue.shade900,
+                              actions: <Widget>[
+                                Row(
+                                  children: [
+                                    TextButton(
+                                      child: const Text(
+                                        'تمويل',
+                                        textAlign:
+                                        TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily:
+                                            'NotoKufiArabic',
+                                            color: Colors
+                                                .white),
+                                      ),
+                                      onPressed: () {
+
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    TextButton(
+                                      child: const Text(
+                                        'عرض تقرير الخطة',
+                                        textAlign:
+                                        TextAlign
+                                            .center,
+                                        style: TextStyle(
+                                            fontFamily:
+                                            'NotoKufiArabic',
+                                            color: Colors
+                                                .white),
+                                      ),
+                                      onPressed: () {
+                                        // Get.to(() =>
+                                        //     council());
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                     ),
                   )
@@ -386,6 +473,7 @@ Get.find<AreaController>().getAreaById(project.area.id);
                 right: 5,
                 left: 5,
                 child: Container(
+
                   width: 70,
                   height: 90,
                   decoration: const BoxDecoration(
@@ -404,7 +492,8 @@ Get.find<AreaController>().getAreaById(project.area.id);
                 ),
               ),
               Positioned(
-                bottom: 0,
+                bottom: 2,
+
                 child: Row(
                   children: [
                     Column(
