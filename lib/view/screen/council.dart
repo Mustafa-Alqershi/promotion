@@ -261,6 +261,7 @@ class _councilState extends State<council> {
                                                     ),
                                                   ),
                                                 ),
+
                                                 trailing: Icon(Icons.search,
                                                     size: 30,
                                                     color: Colors.blue
@@ -274,6 +275,14 @@ class _councilState extends State<council> {
                                                 EdgeInsets.symmetric(
                                                     horizontal: 15,
                                                     vertical: 0),
+                                                leading:  Icon(Icons.person,
+                                                    size: 30,
+                                                    color: Colors.blue
+                                                        .shade900),trailing:    Icon(Icons.star,
+                                                  size: 30,
+                                                  color: Colors.blue
+                                                      .shade900),
+
                                                 title: Text(controller.locale.member.name,
                                                   style: TextStyle(
                                                     fontSize: 12,

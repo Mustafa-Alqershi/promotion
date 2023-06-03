@@ -17,7 +17,8 @@ class AuthController extends GetxController with BaseController {
     isPasswordHidden = !isPasswordHidden;
     update();
   }
-
+  late AuthController authController;
+  AuthController({required this.authController});
 
 
   @override

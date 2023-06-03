@@ -74,7 +74,7 @@ class _SettingsState extends State<Settings> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.find<LocaleController>().changeLang('ar');
+                          Get.find<LocaleController>().changeLang('en');
                         },
                         child: Container(
                           padding: const EdgeInsets.all(10),
