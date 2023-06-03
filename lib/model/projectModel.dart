@@ -185,7 +185,7 @@ class Plan {
     theFinancialCost = json['the_financial_cost'];
     numberOfProjects = json['number_of_projects'];
     status = json['status'];
-    image = json['image'];
+    image = json['image']??"";
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }

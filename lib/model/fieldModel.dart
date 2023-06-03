@@ -35,7 +35,7 @@ class Field {
     id = json['id'];
     sectorId = json['sector_id'];
     name = json['name'];
-    image = json['image'];
+    image = json['image']??"";
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }

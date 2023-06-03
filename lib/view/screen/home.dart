@@ -5,6 +5,7 @@ import 'package:promotion/controller/project_controller.dart';
 import 'package:promotion/core/localization/changelocal.dart';
 import 'package:promotion/view/screen/project_screen.dart';
 
+import '../../controller/area_controller.dart';
 import '../../controller/field_controller.dart';
 import '../../controller/sector_controller.dart';
 import '../../model/fieldModel.dart';
@@ -238,6 +239,7 @@ class HomePage extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {
+Get.find<AreaController>().getAreaById(project.area.id);
                         Get.to(() => area());
                       },
                       child: Text(
