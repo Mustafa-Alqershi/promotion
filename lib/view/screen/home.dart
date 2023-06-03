@@ -225,7 +225,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MediumText(text: project.name),
               Row(
@@ -255,7 +255,8 @@ Get.find<AreaController>().getAreaById(project.area.id);
               ),
             ],
           ),
-          SizedBox(width:150,),
+          SizedBox(width:10,),
+          Spacer(),
           Column(
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [

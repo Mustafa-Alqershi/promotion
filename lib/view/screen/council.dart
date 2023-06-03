@@ -333,6 +333,7 @@ Widget storeCardFeatured2(ChildArea child) {
         child: ListTile(
           title: Text(
             child.name,
+            textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 12,
               fontFamily: 'NotoKufiArabic',
@@ -340,6 +341,7 @@ Widget storeCardFeatured2(ChildArea child) {
           ),
           subtitle: Text(
             child.id.toString(),
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.blue.shade900,
                 fontFamily: 'NotoKufiArabic',
