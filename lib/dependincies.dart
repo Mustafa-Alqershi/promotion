@@ -8,7 +8,7 @@ import 'controller/project_controller.dart';
 import 'controller/sector_controller.dart';
 Future<void> init() async {
   Get.lazyPut(() => SectorController(), fenix: true);
-  Get.lazyPut(() => AuthController(authController: Get.find()));
+  Get.lazyPut(() => AuthController());
   Get.lazyPut(() => ProjectController(), fenix: true);
   Get.lazyPut(() => AreaController(), fenix: true);
   Get.lazyPut(() => LocalController(), fenix: true);
