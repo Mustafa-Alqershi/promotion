@@ -186,7 +186,7 @@ class ChildArea {
     required this.parent,
     required this.typeId,
     required this.desc,
-    this.image,
+    required this.image,
     required this.countPeople,
     required this.lat,
     required this.lon,
@@ -199,7 +199,7 @@ class ChildArea {
   late final int parent;
   late final int typeId;
   late final String desc;
-  late final Null image;
+  late final String image;
   late final String countPeople;
   late final String lat;
   late final String lon;
@@ -212,11 +212,11 @@ class ChildArea {
     name = json['name'];
     parent = json['parent'];
     typeId = json['type_id'];
-    desc = json['desc'];
-    image = json['image'];
+    desc = json['desc']??"";
+    image = json['image']??"";
     countPeople = json['count_people'];
-    lat = json['lat'];
-    lon = json['lon'];
+    lat = json['lat']??"";
+    lon = json['lon']??"";
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     local = List.from(json['local']).map((e)=>Local.fromJson(e)).toList();
