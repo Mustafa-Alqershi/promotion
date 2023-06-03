@@ -7,7 +7,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
+    AuthController authController = Get.put(AuthController(authController:  Get.find()));
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                     width: 150,
                   ),
                   Text(
-                    "خزنتي",
+                    "الصندوق",
                     style: TextStyle(
                         fontSize: 30,
                         color: Colors.blue.shade900,

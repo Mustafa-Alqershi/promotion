@@ -7,6 +7,7 @@ import '../../core/localization/changelocal.dart';
 import 'AboutUs.dart';
 import 'PrivacyPolicy.dart';
 import 'Settings.dart';
+import 'login_screen.dart';
 
 class Menu extends StatefulWidget {
   @override
@@ -62,13 +63,49 @@ class _MenuState extends State<Menu> {
                       const SizedBox(
                         height: 30,
                       ),
-
                       InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => Settings(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.blue.shade900,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.settings,
+                                color: Colors.white,
+                              ),
+                              SizedBox(width: 100),
+                              Text(
+                                "الاعدادات",
+                                style: TextStyle(
+                                  fontFamily: 'NotoKufiArabic',
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
                             ),
                           );
                         },
