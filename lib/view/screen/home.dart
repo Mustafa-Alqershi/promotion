@@ -140,6 +140,34 @@ class HomePage extends StatelessWidget {
                       itemCount: controller.sectors.length,
                       itemBuilder: (context, index) {
                         Sector sector = controller.sectors[index];
+                        return storeCardFeatured3(sector);
+                      });
+                }),
+              ),
+
+              Container(
+                height: 100,
+                width: double.infinity,
+                child: GetBuilder<SectorController>(builder: (controller) {
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.sectors.length,
+                      itemBuilder: (context, index) {
+                        Sector sector = controller.sectors[index];
+                        return storeCardFeatured2(sector);
+                      });
+                }),
+              ),
+
+              Container(
+                height: 150,
+                width: double.infinity,
+                child: GetBuilder<SectorController>(builder: (controller) {
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.sectors.length,
+                      itemBuilder: (context, index) {
+                        Sector sector = controller.sectors[index];
                         return storeCardFeatured(sector);
                       });
                 }),
@@ -165,19 +193,6 @@ class HomePage extends StatelessWidget {
                         color: Colors.blue,
                       )),
                 ],
-              ),
-              Container(
-                height: 100,
-                width: double.infinity,
-                child: GetBuilder<SectorController>(builder: (controller) {
-                  return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: controller.sectors.length,
-                      itemBuilder: (context, index) {
-                        Sector sector = controller.sectors[index];
-                        return storeCardFeatured2(sector);
-                      });
-                }),
               ),
               Container(
                 height: MediaQuery.of(context).size.height * 0.49,
@@ -388,6 +403,90 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget storeCardFeatured(Sector sector) {
+    return Card(
+      child: Container(
+        // margin: const EdgeInsets.symmetric(horizontal: 10),
+        width: 300,
+        height: 150,
+        decoration: BoxDecoration(
+          color: Colors.white12,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Positioned(
+              top: 0,
+              right: 0,
+              left: 0,
+              child: Container(
+                width: 300,
+                height: 90,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: const DecorationImage(
+                    image: AssetImage('assets/food1.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: -5,
+              left: 0,
+              right: 0,
+              child: Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    children: [
+                MediumText(
+                        text: 'project.name',
+                        color: Colors.black,
+                      )                 ,
+                   TextButton(
+                        onPressed: () {
+                          // Get.find<AreaController>().getAreaById(project.area.id);
+                          // Get.to(() => area());
+                        },
+                        child: Text(
+                          'المنطقه' + ' : - ' '+ project.area.name',
+                          style: TextStyle(
+                              color: Colors.blue.shade900,
+                              fontFamily: 'NotoKufiArabic',
+                              fontSize: 13),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+                left: 10,
+                bottom: 55,
+                child: Container(
+                  padding:
+                  const EdgeInsets.symmetric(),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.blue.shade900,
+                  ),
+                  child:
+                  SmallText(text: '....', color: Colors.white),
+                )),
+
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget storeCardSmall(Project project) {
     return Card(
       child: Row(children: [
@@ -512,7 +611,8 @@ class HomePage extends StatelessWidget {
                 child: MediumText(
                   text: project.name,
                   color: Colors.black,
-                )),
+                )
+            ),
             // MediumText(text: project.sector.name,color: Colors.black,),
             Container(
               // padding:
@@ -585,7 +685,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget storeCardFeatured(Sector sector) {
+  Widget storeCardFeatured3(Sector sector) {
     return InkWell(
       onTap: () {
         Get.find<ProjectController>().getProjectsBySector(sector.id);
@@ -686,15 +786,12 @@ class HomePage extends StatelessWidget {
             height: 50,
             child: Center(
               child: ListTile(
-                title: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    sector.name,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontFamily: 'NotoKufiArabic',
-                    ),
+                title: Text(
+                  sector.name,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontFamily: 'NotoKufiArabic',
                   ),
                 ),
               ),
