@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../http_client.dart';
+import '../view/screen/home.dart';
 import 'BaseController.dart';
 
 class AuthController extends GetxController with BaseController {
@@ -33,12 +34,9 @@ class AuthController extends GetxController with BaseController {
       final email = emailCon.text;
       final password = passwordCon.text;
       final api = Api();
-      print("deviceId");
-      print(deviceId);
       var response = await api.post('login', {
         'email': email,
         'password': password,
-        'my_device': deviceId,
       });
       // print(email);
       // print(password);
@@ -58,25 +56,16 @@ class AuthController extends GetxController with BaseController {
         var data = json.decode(response.body);
         var token = data['token'];
         var type = data['type'];
-        var code = data['code'];
-        var error = data['error'];
-        if (code == 400) {
-          closLoading();
-          // showError(error);
-        }
-        print(type);
+      if(type!=null){
         GetStorage().write('type', type);
         GetStorage().write('login', true);
-        GetStorage().write('token', token);
-        if (type == 1) {
-          // Get.offAll(HomeStudent2());
-        }
-        if (type == 2) {
-          // Get.offAll(HomeTeacher());
-        }
-        if (type == 3) {
-          // Get.offAll(HomeAdmin());
-        }
+        closLoading();
+        Get.off(HomePage());
+      }
+
+        print(type);
+
+
       }
       isLoad = false;
     } catch (e) {

@@ -43,6 +43,8 @@ class AreaController extends GetxController {
       print("request.body==============null");
       print(request.body);
       noData==true;
+      isLoad=false;
+      update();
     }
     if (request.statusCode == 200) {
       try {
@@ -51,7 +53,7 @@ class AreaController extends GetxController {
         update();
         isLoad = false;
 
-        noData == true;
+        // noData == true;
       } catch (e, s) {
         noData = true;
         print(s);

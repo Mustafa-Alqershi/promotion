@@ -54,6 +54,7 @@ class Project {
   late final int sectorId;
   late final int memberId;
   late final String file;
+  late final String email;
   late final String createdAt;
   late final String updatedAt;
   late final Area area;
@@ -66,8 +67,9 @@ class Project {
     planId = json['plan_id'];
     areaId = json['area_id'];
     sectorId = json['sector_id'];
-    memberId = json['member_id'];
+    memberId = json['member_id']??0;
     file = json['file'];
+    email = json['user_email']??"";
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     area = Area.fromJson(json['area']);

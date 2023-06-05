@@ -102,7 +102,7 @@ class _areaState extends State<area> {
             if(controller.isLoad==true){
               return Center(child: CircularProgressIndicator(),);
             }
-            if(controller.noData==true){
+            if(controller.noData==true&&controller.isLoad==false){
               return Center(child: Text('لايوجد بيانات',style: TextStyle(fontSize: 20,color: Colors.black),),);
             }
             return Container(
