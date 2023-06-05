@@ -146,7 +146,7 @@ class _councilState extends State<council> {
                                               ),
                                             ),
                                             subtitle: Text(
-                                              "12",
+                                            controller.locale.area.child2.length.toString(),
                                               style: TextStyle(
                                                 fontFamily: 'NotoKufiArabic',
                                                 fontSize: 15,
@@ -163,7 +163,7 @@ class _councilState extends State<council> {
                                               ),
                                             ),
                                             subtitle: Text(
-                                              "45",
+                                              controller.locale.area.child2.length.toString(),
                                               style: TextStyle(
                                                 fontFamily: 'NotoKufiArabic',
                                                 fontSize: 15,

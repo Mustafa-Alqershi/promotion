@@ -101,96 +101,107 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.blue.shade900,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 5,
-            ),
-            // IconButton(
-            //     onPressed: () {
-            //       Get.find<LocaleController>().changeLang('ar');
-            //     },
-            //     icon: const Icon(Icons.language)),
-            Row(
-                // mainAxisAlignment: MainAxisAlignment.end,
+        child: RefreshIndicator(
+          onRefresh: ()async{
+            return   Get.find<ProjectController>().getProject();
+          },
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 5,
+              ),
+              // IconButton(
+              //     onPressed: () {
+              //       Get.find<LocaleController>().changeLang('ar');
+              //     },
+              //     icon: const Icon(Icons.language)),
+              Row(
+                  // mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: BigText(text: '2'.tr),
+                    )
+                  ]),
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                height: 150,
+                width: double.infinity,
+                child: GetBuilder<SectorController>(builder: (controller) {
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.sectors.length,
+                      itemBuilder: (context, index) {
+                        Sector sector = controller.sectors[index];
+                        return storeCardFeatured(sector);
+                      });
+                }),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: BigText(text: '2'.tr),
-                  )
-                ]),
-            const SizedBox(
-              height: 5,
-            ),
-            Container(
-              height: 150,
-              width: double.infinity,
-              child: GetBuilder<SectorController>(builder: (controller) {
-                return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.sectors.length,
-                    itemBuilder: (context, index) {
-                      Sector sector = controller.sectors[index];
-                      return storeCardFeatured(sector);
-                    });
-              }),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: BigText(text: '3'.tr),
-                ),
-                const Spacer(),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.sort_sharp,
-                      color: Colors.blue,
-                    )),
-              ],
-            ),
-            Container(
-              height: 135,
-              width: double.infinity,
-              child: GetBuilder<FieldController>(builder: (controller) {
-                return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.fields.length,
-                    itemBuilder: (context, index) {
-                      Field field = controller.fields[index];
-                      return storeCardFeatured2(field);
-                    });
-              }),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.49,
-              child: GetBuilder<ProjectController>(builder: (controller) {
-                if (controller.isLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else {
+                    child: BigText(text: '3'.tr),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.sort_sharp,
+                        color: Colors.blue,
+                      )),
+                ],
+              ),
+              Container(
+                height: 135,
+                width: double.infinity,
+                child: GetBuilder<FieldController>(builder: (controller) {
                   return ListView.builder(
-                      itemCount: controller.projects.data.projects.length,
-                      scrollDirection: Axis.vertical,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.fields.length,
                       itemBuilder: (context, index) {
-                        Project project =
-                            controller.projects.data.projects[index];
-                        return projectCardSmall(project);
-                        // storeCartBig();
+                        Field field = controller.fields[index];
+                        return storeCardFeatured2(field);
                       });
-                }
-              }),
-            ),
-          ],
+                }),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.49,
+                child: GetBuilder<ProjectController>(builder: (controller) {
+                  if (controller.isLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+
+                  }
+
+                  if(controller.noData==true && controller.isLoading==false){
+
+                    return Center(child: Text('لايوجد بيانات ',style: TextStyle(color: Colors.black,fontSize: 20),),);
+                  }else {
+                    return ListView.builder(
+                        itemCount: controller.projects.data.projects.length,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                          Project project =
+                              controller.projects.data.projects[index];
+                          return projectCardSmall(project);
+                          // storeCartBig();
+                        });
+                  }
+                }),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -293,68 +304,68 @@ class HomePage extends StatelessWidget {
                           color: Colors.blue
                               .shade900),
                       onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder:
-                              (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text(
-                                'المجالس',
-                                textAlign:
-                                TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily:
-                                  'NotoKufiArabic',
-                                  color: Colors.white,
-                                ),
-                              ),
-                              backgroundColor: Colors
-                                  .blue.shade900,
-                              actions: <Widget>[
-                                Row(
-                                  children: [
-                                    TextButton(
-                                      child: const Text(
-                                        'تمويل',
-                                        textAlign:
-                                        TextAlign.center,
-                                        style: TextStyle(
-                                            fontFamily:
-                                            'NotoKufiArabic',
-                                            color: Colors
-                                                .white),
-                                      ),
-                                      onPressed: () {
-
-                                      },
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    TextButton(
-                                      child: const Text(
-                                        'عرض تقرير الخطة',
-                                        textAlign:
-                                        TextAlign
-                                            .center,
-                                        style: TextStyle(
-                                            fontFamily:
-                                            'NotoKufiArabic',
-                                            color: Colors
-                                                .white),
-                                      ),
-                                      onPressed: () {
-                                        // Get.to(() =>
-                                        //     council());
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            );
-                          },
-                        );
+                        // showDialog(
+                        //   context: context,
+                        //   builder:
+                        //       (BuildContext context) {
+                        //     return AlertDialog(
+                        //       title: const Text(
+                        //         'المجالس',
+                        //         textAlign:
+                        //         TextAlign.center,
+                        //         style: TextStyle(
+                        //           fontFamily:
+                        //           'NotoKufiArabic',
+                        //           color: Colors.white,
+                        //         ),
+                        //       ),
+                        //       backgroundColor: Colors
+                        //           .blue.shade900,
+                        //       actions: <Widget>[
+                        //         Row(
+                        //           children: [
+                        //             TextButton(
+                        //               child: const Text(
+                        //                 'تمويل',
+                        //                 textAlign:
+                        //                 TextAlign.center,
+                        //                 style: TextStyle(
+                        //                     fontFamily:
+                        //                     'NotoKufiArabic',
+                        //                     color: Colors
+                        //                         .white),
+                        //               ),
+                        //               onPressed: () {
+                        //
+                        //               },
+                        //             ),
+                        //           ],
+                        //         ),
+                        //         Row(
+                        //           children: [
+                        //             TextButton(
+                        //               child: const Text(
+                        //                 'عرض تقرير الخطة',
+                        //                 textAlign:
+                        //                 TextAlign
+                        //                     .center,
+                        //                 style: TextStyle(
+                        //                     fontFamily:
+                        //                     'NotoKufiArabic',
+                        //                     color: Colors
+                        //                         .white),
+                        //               ),
+                        //               onPressed: () {
+                        //                 // Get.to(() =>
+                        //                 //     council());
+                        //               },
+                        //             ),
+                        //           ],
+                        //         ),
+                        //       ],
+                        //     );
+                        //   },
+                        // );
                       },
                     ),
                   )
@@ -435,8 +446,8 @@ class HomePage extends StatelessWidget {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 80),
-                              child: MediumText(
-                                  text: sector.name, color: Colors.white),
+                              child: Text(
+                                   sector.name, style:TextStyle(color:Colors.white, fontFamily: 'NotoKufiArabic',fontSize: 16)),
                             ),
                           )
                         ],
@@ -453,72 +464,77 @@ class HomePage extends StatelessWidget {
   }
 
   Widget storeCardFeatured2(Field field) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100.0),
-        ),
-        child: Container(
-          width: 100,
-          height: 200,
-          decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Colors.grey.shade200),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Positioned(
-                top: 5,
-                right: 5,
-                left: 5,
-                child: Container(
+    return InkWell(
+      onTap: (){
+        Get.find<ProjectController>().getProjectsByField(field.id);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100.0),
+          ),
+          child: Container(
+            width: 100,
+            height: 200,
+            decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                color: Colors.grey.shade200),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Positioned(
+                  top: 5,
+                  right: 5,
+                  left: 5,
+                  child: Container(
 
-                  width: 70,
-                  height: 90,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(
-                          50,
-                        ),
-                        bottomLeft: Radius.circular(50),
-                        bottomRight: Radius.circular(50)),
-                    image: DecorationImage(
-                      image: AssetImage('assets/2.jpg'),
-                      fit: BoxFit.cover,
+                    width: 70,
+                    height: 90,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(
+                            50,
+                          ),
+                          bottomLeft: Radius.circular(50),
+                          bottomRight: Radius.circular(50)),
+                      image: DecorationImage(
+                        image: AssetImage('assets/2.jpg'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 2,
+                Positioned(
+                  bottom: 2,
 
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                field.name,
-                                style: TextStyle(
-                                  color: Colors.blue.shade900,
-                                  fontFamily: 'NotoKufiArabic',
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  field.name,
+                                  style: TextStyle(
+                                    color: Colors.blue.shade900,
+                                    fontFamily: 'NotoKufiArabic',
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

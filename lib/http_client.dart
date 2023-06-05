@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class Api {
   static final Api _singleton = Api._internal();
-  final String _baseUrl = 'http://192.168.0.147:8000/api/';
+  final String _baseUrl = 'https://topsoftp.com/sfd/api/';
   late http.Client _client;
   late String _token;
   factory Api() {

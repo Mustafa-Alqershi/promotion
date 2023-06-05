@@ -26,7 +26,10 @@ class AreaWithChild {
     status = json['status'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    area = Area.fromJson(json['area']);
+    if(json['area']!=null){
+      area = Area.fromJson(json['area']);
+    }
+
     member = Member.fromJson(json['member']);
   }
 
@@ -88,7 +91,10 @@ class Area {
     lon = json['lon'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    type = Type.fromJson(json['type']);
+    if(json['type']!=null){
+      type = Type.fromJson(json['type']);
+    }
+
     local = List.from(json['local']).map((e)=>Local.fromJson(e)).toList();
     child2 = List.from(json['child2']).map((e)=>Child2.fromJson(e)).toList();
   }
@@ -127,9 +133,9 @@ class Type {
 
   Type.fromJson(Map<String, dynamic> json){
     id = json['id'];
-    name = json['name'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    name = json['name']??"";
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
   }
 
   Map<String, dynamic> toJson() {
@@ -217,8 +223,8 @@ class Child2 {
     countPeople = json['count_people'];
     lat = json['lat']??"";
     lon = json['lon']??"";
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    createdAt = json['created_at']??"";
+    updatedAt = json['updated_at']??"";
     local = List.from(json['local']).map((e)=>Local.fromJson(e)).toList();
   }
 

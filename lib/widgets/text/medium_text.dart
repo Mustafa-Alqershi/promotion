@@ -6,6 +6,6 @@ class MediumText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text('$text',style: TextStyle(fontFamily: 'NotoKufiArabic',fontSize: 18,fontWeight: FontWeight.normal,color:color),overflow: TextOverflow.ellipsis,softWrap: true,textAlign: TextAlign.right,);
+    return  Text('$text',style: TextStyle(fontFamily: 'NotoKufiArabic',fontSize: 18,fontWeight: FontWeight.normal,color:color),overflow: TextOverflow.ellipsis,softWrap: false,textAlign: TextAlign.right,);
   }
 }

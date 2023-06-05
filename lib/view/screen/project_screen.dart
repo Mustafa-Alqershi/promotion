@@ -49,18 +49,18 @@ Widget storeCardSmall(Project project) {
           children: [
             Row(
               children: [
-                MediumText(text: 'شهر',color: Colors.black,),
-                SizedBox(width: 10,),
-                MediumText(text: project.plan.timePeriod,color: Colors.black,),
-                SizedBox(width: 10,),
-                MediumText(text: 'الفترة',color: Colors.black,),
+                SmallText(text: 'شهر',color: Colors.black,),
+                SizedBox(width: 5,),
+                SmallText(text: project.plan.timePeriod,color: Colors.black,),
+                SizedBox(width: 5,),
+                SmallText(text: 'الفترة',color: Colors.black,),
               ],
             ),
             Row(
               children: [
-                MediumText(text: project.plan.theFinancialCost.toString(),color: Colors.black,),
-                SizedBox(width: 10,),
-                MediumText(text: 'التكلفة',color: Colors.black,),
+               SmallText(text: project.plan.theFinancialCost.toString(),color: Colors.black,),
+                SizedBox(width: 5,),
+                SmallText(text: 'التكلفة',color: Colors.black,),
               ],
             ),
 
@@ -88,13 +88,13 @@ Widget storeCardSmall(Project project) {
                 // MediumText(text: project.sector.name,color: Colors.black,),
                 SmallText(text: project.plan.name, color: Colors.black),
                 // SmallText(text: '2.57 ', color: Colors.black),
-                SizedBox(
-                  width: 5,
-                ),
+                // SizedBox(
+                //   width: 5,
+                // ),
                 // SmallText(text: '4.5', color: Colors.black),
-                SizedBox(
-                  width: 5,
-                ),
+                // SizedBox(
+                //   width: 5,
+                // ),
                 // const Icon(
                 //   Icons.star,
                 //   color: Colors.yellow,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../core/localization/changelocal.dart';
 import 'ChengPasswoed.dart';
@@ -74,7 +75,6 @@ class _SettingsState extends State<Settings> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.find<LocaleController>().changeLang('en');
                         },
                         child: Container(
                           padding: const EdgeInsets.all(10),
@@ -82,19 +82,31 @@ class _SettingsState extends State<Settings> {
                             color: Colors.blue.shade900,
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          child: const Row(
+                          child:  Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
                                 Icons.language,
                                 color: Colors.white,
                               ),
-                              SizedBox(width: 100),
-                              Text(
-                                "تغيير اللغة",
-                                style: TextStyle(
-                                  fontFamily: 'NotoKufiArabic',
-                                  color: Colors.white,
+                              const SizedBox(width: 100),
+                              InkWell(
+                                onTap: (){
+                                  var lang=GetStorage().read('lang');
+                                  if(lang=='ar'){
+                                    Get.find<LocaleController>().changeLang('en');
+                                  }else{
+                                    Get.find<LocaleController>().changeLang('ar');
+                                  }
+
+
+                                },
+                                child: Text(
+                                  "تغيير اللغة",
+                                  style: TextStyle(
+                                    fontFamily: 'NotoKufiArabic',
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ],

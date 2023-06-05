@@ -6,11 +6,11 @@ import 'package:get_storage/get_storage.dart';
 import '../http_client.dart';
 import '../model/projectModel.dart';
 
-
 class ProjectController extends GetxController {
-  late  ProjectModel projects =   ProjectModel.empty();
+  late ProjectModel projects = ProjectModel.empty();
   int index = 0;
   bool isLoading = true;
+  bool noData = false;
   int id = 0;
 
   @override
@@ -18,9 +18,11 @@ class ProjectController extends GetxController {
     super.onInit();
     getProject();
   }
+
   final TextEditingController nameController = TextEditingController();
+
   void getProject() async {
-    isLoading=true;
+    isLoading = true;
     print('get getProject');
     final api = Api();
     final request = await api.get("project");
@@ -34,14 +36,16 @@ class ProjectController extends GetxController {
         print(request.body);
         projects = ProjectModel.fromJson(data);
         isLoading = false;
+
         update();
       } catch (e, s) {
         print(s);
       }
     } else {}
   }
+
   void getProjectsBySector(int sectorId) async {
-    isLoading=true;
+    isLoading = true;
     print('get getProjectsBySector');
     final api = Api();
     final request = await api.get("project/sector/$sectorId");
@@ -62,7 +66,31 @@ class ProjectController extends GetxController {
     } else {}
   }
 
-
-
-
+  void getProjectsByField(int field) async {
+    isLoading = true;
+    print('get getProjectsByField');
+    final api = Api();
+    final request = await api.get("project/field/$field");
+    print(request.body);
+    if (request.statusCode == 200) {
+      try {
+        print(request.body);
+        var data = json.decode(request.body);
+        // await GetStorage().write('student', data);
+        print('get getProjectsByField ');
+        print(request.body);
+        projects = ProjectModel.fromJson(data);
+        isLoading = false;
+        if (projects.data.projects.isEmpty) {
+          noData == true;
+          print('get getProjectsByField  no data **************8');
+          update();
+        }
+        update();
+      } catch (e, s) {
+        print(s);
+        noData = true;
+      }
+    } else {}
+  }
 }

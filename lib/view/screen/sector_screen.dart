@@ -104,8 +104,8 @@ class SectorScreen extends StatelessWidget {
                                     horizontal: 50),
                                 child:
                                 Center(
-                                  child: MediumText(
-                                      text: sector.name, color: Colors.white),
+                                  child:
+                                  Text(sector.name, style:const TextStyle(color:Colors.white, fontFamily: 'NotoKufiArabic',fontSize: 16,fontWeight: FontWeight.bold)),
                                 ),
                               ),
                             )
