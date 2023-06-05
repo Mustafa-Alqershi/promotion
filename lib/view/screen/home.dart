@@ -162,16 +162,35 @@ class HomePage extends StatelessWidget {
               Container(
                 height: 150,
                 width: double.infinity,
-                child: GetBuilder<SectorController>(builder: (controller) {
-                  return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: controller.sectors.length,
-                      itemBuilder: (context, index) {
-                        Sector sector = controller.sectors[index];
-                        return storeCardFeatured(sector);
-                      });
+                child: GetBuilder<ProjectController>(builder: (controller) {
+                  if (controller.isLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+
+                  if (controller.noData == true &&
+                      controller.isLoading == false) {
+                    return Center(
+                      child: Text(
+                        'لايوجد بيانات ',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      ),
+                    );
+                  } else {
+                    return ListView.builder(
+                        itemCount: controller.projects.data.projects.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          Project project =
+                          controller.projects.data.projects[index];
+                          return storeCardFeatured(project);
+                          // storeCartBig();
+                        });
+                  }
                 }),
               ),
+
               const SizedBox(
                 height: 10,
               ),
@@ -193,36 +212,6 @@ class HomePage extends StatelessWidget {
                         color: Colors.blue,
                       )),
                 ],
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.49,
-                child: GetBuilder<ProjectController>(builder: (controller) {
-                  if (controller.isLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
-                  if (controller.noData == true &&
-                      controller.isLoading == false) {
-                    return Center(
-                      child: Text(
-                        'لايوجد بيانات ',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
-                      ),
-                    );
-                  } else {
-                    return ListView.builder(
-                        itemCount: controller.projects.data.projects.length,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          Project project =
-                              controller.projects.data.projects[index];
-                          return storeCardSmall(project);
-                          // storeCartBig();
-                        });
-                  }
-                }),
               ),
             ],
           ),
@@ -403,7 +392,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget storeCardFeatured(Sector sector) {
+  Widget storeCardFeatured(Project project) {
     return Card(
       child: Container(
         // margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -446,16 +435,16 @@ class HomePage extends StatelessWidget {
                   Column(
                     children: [
                 MediumText(
-                        text: 'project.name',
+                        text: project.name,
                         color: Colors.black,
                       )                 ,
                    TextButton(
                         onPressed: () {
-                          // Get.find<AreaController>().getAreaById(project.area.id);
-                          // Get.to(() => area());
+                          Get.find<AreaController>().getAreaById(project.area.id);
+                          Get.to(() => area());
                         },
                         child: Text(
-                          'المنطقه' + ' : - ' '+ project.area.name',
+                          'المنطقه' + ' : - ' + project.area.name,
                           style: TextStyle(
                               color: Colors.blue.shade900,
                               fontFamily: 'NotoKufiArabic',
@@ -469,16 +458,85 @@ class HomePage extends StatelessWidget {
             ),
             Positioned(
                 left: 10,
-                bottom: 55,
+                bottom: 0,
                 child: Container(
                   padding:
                   const EdgeInsets.symmetric(),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blue.shade900,
-                  ),
+
                   child:
-                  SmallText(text: '....', color: Colors.white),
+                  IconButton(
+                    icon: Icon(Icons.menu_open,
+                        size: 30, color: Colors.blue.shade900), onPressed: () {  },
+                    // onPressed: () {
+                    //   Get.defaultDialog(
+                    //     content: Column(
+                    //       children: [],
+                    //     ),
+                    //   );
+                    //   showDialog(
+                    //     context: context,
+                    //     builder:
+                    //         (BuildContext context) {
+                    //       return AlertDialog(
+                    //         title: const Text(
+                    //           'المجالس',
+                    //           textAlign:
+                    //           TextAlign.center,
+                    //           style: TextStyle(
+                    //             fontFamily:
+                    //             'NotoKufiArabic',
+                    //             color: Colors.white,
+                    //           ),
+                    //         ),
+                    //         backgroundColor: Colors
+                    //             .blue.shade900,
+                    //         actions: <Widget>[
+                    //           Row(
+                    //             children: [
+                    //               TextButton(
+                    //                 child: const Text(
+                    //                   'تمويل',
+                    //                   textAlign:
+                    //                   TextAlign.center,
+                    //                   style: TextStyle(
+                    //                       fontFamily:
+                    //                       'NotoKufiArabic',
+                    //                       color: Colors
+                    //                           .white),
+                    //                 ),
+                    //                 onPressed: () {
+                    //
+                    //                 },
+                    //               ),
+                    //             ],
+                    //           ),
+                    //           Row(
+                    //             children: [
+                    //               TextButton(
+                    //                 child: const Text(
+                    //                   'عرض تقرير الخطة',
+                    //                   textAlign:
+                    //                   TextAlign
+                    //                       .center,
+                    //                   style: TextStyle(
+                    //                       fontFamily:
+                    //                       'NotoKufiArabic',
+                    //                       color: Colors
+                    //                           .white),
+                    //                 ),
+                    //                 onPressed: () {
+                    //                   // Get.to(() =>
+                    //                   //     council());
+                    //                 },
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ],
+                    //       );
+                    //     },
+                    //   );
+                    // },
+                  ),
                 )),
 
           ],
