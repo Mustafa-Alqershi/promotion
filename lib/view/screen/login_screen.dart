@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const SizedBox(height: 80.0),
                   Text(
-                    "الصندوق",
+                    "تسجيل الدخول",
                     style: TextStyle(
                         fontSize: 30,
                         fontFamily: 'NotoKufiArabic',
