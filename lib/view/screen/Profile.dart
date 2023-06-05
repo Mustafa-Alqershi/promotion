@@ -44,7 +44,7 @@ class _ProfileState extends State<Profile> {
                     ),
                     Text(
 
-                          "علي عنبة",
+                          "اسم المستخدم",
                       style: TextStyle(
                           fontSize: 22,
                           fontFamily: 'NotoKufiArabic',
@@ -86,7 +86,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                             subtitle: Text(
 
-                                                  "mu.alqershi@gmail.com",
+                                                  "user@gmail.com",
                                               style: TextStyle(
                                                 fontFamily: 'NotoKufiArabic',
                                                 fontSize: 15,
@@ -108,7 +108,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                             subtitle: Text(
 
-                                                  "772150224",
+                                                  "77777777",
                                               style: TextStyle(
                                                 fontFamily: 'NotoKufiArabic',
                                                 fontSize: 15,
