@@ -431,7 +431,7 @@ class HomePage extends StatelessWidget {
                       if(type=="investor") {
                         Get.defaultDialog(
                           title: '',
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.blue.shade900,
                           content: Column(children: [
                             const Text(
                               '',

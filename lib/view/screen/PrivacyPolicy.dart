@@ -55,7 +55,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              "نحن في حاضرين"
+                              "نحن في تواصل تنموي"
                               " نلتزم بحماية خصوصية المستخدمين ونقدر ثقتكم بنا."
                               " تتعلق سياسة الخصوصية هذه بجمع واستخدام"
                               " وكشف المعلومات الشخصية عند استخدام تطبيقنا."
