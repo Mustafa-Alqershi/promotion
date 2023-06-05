@@ -475,7 +475,7 @@ class HomePage extends StatelessWidget {
                                     textAlign:
                                     TextAlign
                                         .center,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontFamily:
                                         'NotoKufiArabic',
                                         color: Colors.white),
