@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../screen/Menu.dart';
+import '../../screen/Profile.dart';
 import '../../screen/home.dart';
 import '../../screen/sector_screen.dart';
 
@@ -16,10 +17,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   List<Widget> listPage = [
     HomePage(),
     SectorScreen(),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("Profile"))],
-    ),
+  Profile(),
     Menu(),
   ];
 
