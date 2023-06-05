@@ -144,59 +144,6 @@ class HomePage extends StatelessWidget {
                       });
                 }),
               ),
-
-              Container(
-                height: 100,
-                width: double.infinity,
-                child: GetBuilder<SectorController>(builder: (controller) {
-                  return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: controller.sectors.length,
-                      itemBuilder: (context, index) {
-                        Sector sector = controller.sectors[index];
-                        return storeCardFeatured2(sector);
-                      });
-                }),
-              ),
-
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: GetBuilder<ProjectController>(builder: (controller) {
-                  if (controller.isLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
-                  if (controller.noData == true &&
-                      controller.isLoading == false) {
-                    return Center(
-                      child: Text(
-                        'لايوجد بيانات ',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
-                      ),
-                    );
-                  } else {
-                    return ListView.builder(
-                        itemCount: controller.projects.data.projects.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          Project project =
-                          controller.projects.data.projects[index];
-                          return storeCardFeatured(project);
-                          // storeCartBig();
-                        });
-                  }
-                }),
-              ),
-
-              const SizedBox(
-                height: 10,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -212,6 +159,65 @@ class HomePage extends StatelessWidget {
                         color: Colors.blue,
                       )),
                 ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 100,
+                  width: double.infinity,
+                  child: GetBuilder<SectorController>(builder: (controller) {
+                    return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.sectors.length,
+                        itemBuilder: (context, index) {
+                          Sector sector = controller.sectors[index];
+                          return storeCardFeatured2(sector);
+                        });
+                  }),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 150,
+                  width: double.infinity,
+                  child: GetBuilder<ProjectController>(builder: (controller) {
+                    if (controller.isLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    if (controller.noData == true &&
+                        controller.isLoading == false) {
+                      return Center(
+                        child: Text(
+                          'لايوجد بيانات ',
+                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        ),
+                      );
+                    } else {
+                      return ListView.builder(
+                          itemCount: controller.projects.data.projects.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            Project project =
+                                controller.projects.data.projects[index];
+                            return storeCardFeatured(project);
+                            // storeCartBig();
+                          });
+                    }
+                  }),
+                ),
+              ),
+
+              const SizedBox(
+                height: 10,
+              ),
+              const SizedBox(
+                width: 10,
               ),
             ],
           ),
@@ -272,12 +278,6 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    // padding:
-                    //     const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                    // decoration: BoxDecoration(
-                    //   color: Colors.blue.shade900,
-                    //   borderRadius: BorderRadius.circular(10),
-                    // ),
                     child: TextButton(
                       onPressed: () {
                         Get.find<AreaController>().getAreaById(project.area.id);
@@ -415,7 +415,7 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
-                    image: AssetImage('assets/food1.jpg'),
+                    image: AssetImage('assets/sfd.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -434,13 +434,14 @@ class HomePage extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                MediumText(
+                      MediumText(
                         text: project.name,
                         color: Colors.black,
-                      )                 ,
-                   TextButton(
+                      ),
+                      TextButton(
                         onPressed: () {
-                          Get.find<AreaController>().getAreaById(project.area.id);
+                          Get.find<AreaController>()
+                              .getAreaById(project.area.id);
                           Get.to(() => area());
                         },
                         child: Text(
@@ -460,13 +461,11 @@ class HomePage extends StatelessWidget {
                 left: 10,
                 bottom: 0,
                 child: Container(
-                  padding:
-                  const EdgeInsets.symmetric(),
-
-                  child:
-                  IconButton(
+                  padding: const EdgeInsets.symmetric(),
+                  child: IconButton(
                     icon: Icon(Icons.menu_open,
-                        size: 30, color: Colors.blue.shade900), onPressed: () {  },
+                        size: 30, color: Colors.blue.shade900),
+                    onPressed: () {},
                     // onPressed: () {
                     //   Get.defaultDialog(
                     //     content: Column(
@@ -538,7 +537,6 @@ class HomePage extends StatelessWidget {
                     // },
                   ),
                 )),
-
           ],
         ),
       ),
@@ -669,8 +667,7 @@ class HomePage extends StatelessWidget {
                 child: MediumText(
                   text: project.name,
                   color: Colors.black,
-                )
-            ),
+                )),
             // MediumText(text: project.sector.name,color: Colors.black,),
             Container(
               // padding:
