@@ -446,8 +446,8 @@ class HomePage extends StatelessWidget {
                             Row(
                               children: [
                                 TextButton(
-                                  child: const Text(
-                                    'تمويل',
+                                  child:  Text(
+                                    '49'.tr,
                                     textAlign:
                                     TextAlign.center,
                                     style: TextStyle(
@@ -470,8 +470,8 @@ class HomePage extends StatelessWidget {
                             Row(
                               children: [
                                 TextButton(
-                                  child: const Text(
-                                    'عرض التقرير',
+                                  child:  Text(
+                                    '50'.tr,
                                     textAlign:
                                     TextAlign
                                         .center,
