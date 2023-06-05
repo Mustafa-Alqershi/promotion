@@ -28,16 +28,12 @@ class _ProfileState extends State<Profile> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
+
                         borderRadius: BorderRadius.circular(100),
-                        border:
-                            Border.all(width: 2, color: Colors.blue.shade900),
-                        color: Colors.blue.shade900,
+
+                        color: Colors.grey.shade500,
                         boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 20,
-                            offset: Offset(5, 5),
-                          ),
+
                         ],
                       ),
                       child: const Icon(
