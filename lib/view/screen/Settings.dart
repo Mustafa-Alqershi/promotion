@@ -102,7 +102,7 @@ class _SettingsState extends State<Settings> {
 
                                 },
                                 child: Text(
-                                  "تغيير اللغة",
+                                  '47'.tr,
                                   style: TextStyle(
                                     fontFamily: 'NotoKufiArabic',
                                     color: Colors.white,
@@ -133,14 +133,14 @@ class _SettingsState extends State<Settings> {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children:  [
                               Icon(
                                 Icons.lock,
                                 color: Colors.white,
                               ),
                               SizedBox(width: 120),
                               Text(
-                                "كلمة المرور",
+                               '19'.tr,
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,
@@ -166,14 +166,14 @@ class _SettingsState extends State<Settings> {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children:  [
                               Icon(
                                 Icons.logout,
                                 color: Colors.white,
                               ),
                               SizedBox(width: 100),
                               Text(
-                                "تسجيل الخروج",
+                                '48'.tr,
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,

@@ -45,14 +45,14 @@ class AuthController extends GetxController with BaseController {
       print(response.statusCode);
       if (response.statusCode == 400 || response.statusCode == 401) {
         closLoading();
-        // showError('خطاء في اسم المستخدم او كلمة المرور ');
+        print('error 400');
         isLoad = false;
       }
 
       if (response.statusCode == 200) {
         print(email);
         print(password);
-        print(deviceId);
+
         var data = json.decode(response.body);
         var token = data['token'];
         var type = data['type'];
@@ -61,6 +61,8 @@ class AuthController extends GetxController with BaseController {
         GetStorage().write('login', true);
         closLoading();
         Get.off(HomePage());
+      }else{
+        closLoading();
       }
 
         print(type);

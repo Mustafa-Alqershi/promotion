@@ -78,7 +78,7 @@ class _MenuState extends State<Menu> {
                             color: Colors.blue.shade900,
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          child: const Row(
+                          child:  Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -87,7 +87,7 @@ class _MenuState extends State<Menu> {
                               ),
                               SizedBox(width: 100),
                               Text(
-                                "الاعدادات",
+                                '46'.tr,
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,
@@ -115,7 +115,7 @@ class _MenuState extends State<Menu> {
                             color: Colors.blue.shade900,
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          child: const Row(
+                          child:  Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -124,7 +124,7 @@ class _MenuState extends State<Menu> {
                               ),
                               SizedBox(width: 100),
                               Text(
-                                "تسجيل الدخول",
+                                '9'.tr,
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,
@@ -153,7 +153,7 @@ class _MenuState extends State<Menu> {
                             color: Colors.blue.shade900,
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          child: const Row(
+                          child:  Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -162,7 +162,7 @@ class _MenuState extends State<Menu> {
                               ),
                               SizedBox(width: 120),
                               Text(
-                                "عن التطبيق",
+                                '43'.tr,
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,
@@ -190,7 +190,7 @@ class _MenuState extends State<Menu> {
                             color: Colors.blue.shade900,
                             borderRadius: BorderRadius.circular(30.0),
                           ),
-                          child: const Row(
+                          child:  Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -199,7 +199,7 @@ class _MenuState extends State<Menu> {
                               ),
                               SizedBox(width: 80),
                               Text(
-                                "سياسة الخصوصية",
+                                '45'.tr,
                                 style: TextStyle(
                                   fontFamily: 'NotoKufiArabic',
                                   color: Colors.white,
