@@ -118,7 +118,7 @@ class MyTranslation extends Translations {
           "46": "Settings",
           "47": "Change the language",
           "48": "log out",
-          "49": " finance",
+          "49": "finance",
           "50": "view the report",
           "51": "the region",
           "52": "the name of the region",

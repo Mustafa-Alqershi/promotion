@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-        title: const Text('الصندوق',
+        title: const Text('تواصل تنموي',
             style: TextStyle(
               fontFamily: 'NotoKufiArabic',
             )),
@@ -107,8 +107,8 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: RefreshIndicator(
-          onRefresh: ()async{
-            return   Get.find<ProjectController>().getProject();
+          onRefresh: () async {
+            return Get.find<ProjectController>().getProject();
           },
           child: Column(
             children: [
@@ -167,7 +167,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Container(
-                height: 135,
+                height: 100,
                 width: double.infinity,
                 child: GetBuilder<SectorController>(builder: (controller) {
                   return ListView.builder(
@@ -186,13 +186,17 @@ class HomePage extends StatelessWidget {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
-
                   }
 
-                  if(controller.noData==true && controller.isLoading==false){
-
-                    return Center(child: Text('لايوجد بيانات ',style: TextStyle(color: Colors.black,fontSize: 20),),);
-                  }else {
+                  if (controller.noData == true &&
+                      controller.isLoading == false) {
+                    return Center(
+                      child: Text(
+                        'لايوجد بيانات ',
+                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      ),
+                    );
+                  } else {
                     return ListView.builder(
                         itemCount: controller.projects.data.projects.length,
                         scrollDirection: Axis.vertical,
@@ -227,7 +231,7 @@ class HomePage extends StatelessWidget {
               width: 80,
               height: 80,
               decoration: const BoxDecoration(
-                color:  Colors.blue,
+                color: Colors.blue,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(50),
                     topRight: Radius.circular(
@@ -240,9 +244,7 @@ class HomePage extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-
             ),
-
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,19 +252,17 @@ class HomePage extends StatelessWidget {
               // MediumText(text: project.name),
               Text(
                 project.name,
-                style:  TextStyle(
+                style: TextStyle(
                     color: Colors.blue.shade900,
-                    fontFamily: 'NotoKufiArabic'
-                    ,fontSize: 15
-                ),
+                    fontFamily: 'NotoKufiArabic',
+                    fontSize: 15),
               ),
               Text(
-                'تاريخ التنفيذ'+project. plan.publishData,
-                style:  TextStyle(
+                'تاريخ التنفيذ' + project.plan.publishData,
+                style: TextStyle(
                     color: Colors.blue.shade900,
-                    fontFamily: 'NotoKufiArabic'
-                    ,fontSize: 10
-                ),
+                    fontFamily: 'NotoKufiArabic',
+                    fontSize: 10),
               ),
 
               Row(
@@ -280,12 +280,11 @@ class HomePage extends StatelessWidget {
                         Get.to(() => area());
                       },
                       child: Text(
-                      'المنطقه'+' : - '+  project.area.name,
-                        style:  TextStyle(
-                          color: Colors.blue.shade900,
-                          fontFamily: 'NotoKufiArabic'
-                          ,fontSize: 13
-                        ),
+                        'المنطقه' + ' : - ' + project.area.name,
+                        style: TextStyle(
+                            color: Colors.blue.shade900,
+                            fontFamily: 'NotoKufiArabic',
+                            fontSize: 13),
                       ),
                     ),
                   )
@@ -301,16 +300,15 @@ class HomePage extends StatelessWidget {
             children: [
               Row(
                 children: [
-
                   Container(
                     child: IconButton(
                       icon: Icon(Icons.menu_open,
-                          size: 30,
-                          color: Colors.blue
-                              .shade900),
+                          size: 30, color: Colors.blue.shade900),
                       onPressed: () {
                         Get.defaultDialog(
-                          content: Column(children: [],),
+                          content: Column(
+                            children: [],
+                          ),
                         );
                         // showDialog(
                         //   context: context,
@@ -389,76 +387,92 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
   Widget storeCardSmall(Project project) {
     return Card(
-      child: Row(
+      child: Row(children: [
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
           children: [
-            const SizedBox(
-              width: 10,
-            ),
-            Column(
+            Row(
               children: [
-                Row(
-                  children: [
-                    SmallText(text: 'شهر',color: Colors.black,),
-                    SizedBox(width: 5,),
-                    SmallText(text: project.plan.timePeriod,color: Colors.black,),
-                    SizedBox(width: 5,),
-                    SmallText(text: 'الفترة',color: Colors.black,),
-                  ],
+                SmallText(
+                  text: 'شهر',
+                  color: Colors.black,
                 ),
-                Row(
-                  children: [
-                    SmallText(text: project.plan.theFinancialCost.toString(),color: Colors.black,),
-                    SizedBox(width: 5,),
-                    SmallText(text: 'التكلفة',color: Colors.black,),
-                  ],
+                SizedBox(
+                  width: 5,
                 ),
-
+                SmallText(
+                  text: project.plan.timePeriod,
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                SmallText(
+                  text: 'الفترة',
+                  color: Colors.black,
+                ),
               ],
             ),
-            // MediumText(text: project.sector.name,color: Colors.black,),
-            const Spacer(),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+            Row(
               children: [
-                InkWell(
-                  onTap: (){
-                    var login =GetStorage().read('login')??false;
-                    var type =GetStorage().read('type')??"";
-                    if(login==true){
-                      if(type=="investor") {
-                        Get.defaultDialog(
-                          title: '',
-                          backgroundColor: Colors.blue.shade900,
-                          content: Column(children: [
+                SmallText(
+                  text: project.plan.theFinancialCost.toString(),
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                SmallText(
+                  text: 'التكلفة',
+                  color: Colors.black,
+                ),
+              ],
+            ),
+          ],
+        ),
+        // MediumText(text: project.sector.name,color: Colors.black,),
+        const Spacer(),
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            InkWell(
+                onTap: () {
+                  var login = GetStorage().read('login') ?? false;
+                  var type = GetStorage().read('type') ?? "";
+                  if (login == true) {
+                    if (type == "investor") {
+                      Get.defaultDialog(
+                        title: '',
+                        backgroundColor: Colors.blue.shade900,
+                        content: Column(
+                          children: [
                             const Text(
                               '',
-                              textAlign:
-                              TextAlign.center,
+                              textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontFamily:
-                                'NotoKufiArabic',
+                                fontFamily: 'NotoKufiArabic',
                                 color: Colors.white,
                               ),
                             ),
                             Row(
                               children: [
                                 TextButton(
-                                  child:  Text(
+                                  child: Text(
                                     '49'.tr,
-                                    textAlign:
-                                    TextAlign.center,
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontFamily:
-                                        'NotoKufiArabic',
-                                        color: Colors
-                                            .white),
+                                        fontFamily: 'NotoKufiArabic',
+                                        color: Colors.white),
                                   ),
                                   onPressed: () {
-                                    var url = Uri.parse('mailto:${project
-                                        .email}?subject=News&body=مرحبا');
+                                    var url = Uri.parse(
+                                        'mailto:${project.email}?subject=News&body=مرحبا');
                                     _launchUrl(url);
                                     // Get.find<LocalController>().getLocaleByArea(project.area.id);
                                     // Get.to(() =>
@@ -470,104 +484,105 @@ class HomePage extends StatelessWidget {
                             Row(
                               children: [
                                 TextButton(
-                                  child:  Text(
+                                  child: Text(
                                     '50'.tr,
-                                    textAlign:
-                                    TextAlign
-                                        .center,
+                                    textAlign: TextAlign.center,
                                     style: const TextStyle(
-                                        fontFamily:
-                                        'NotoKufiArabic',
+                                        fontFamily: 'NotoKufiArabic',
                                         color: Colors.white),
                                   ),
                                   onPressed: () {
                                     print(project.file.toString());
                                     Get.to(PDFScreen(
-                                        path: "https://topsoftp.com/sfd/storage/app/" +
-                                            project.file.toString()));
+                                        path:
+                                            "https://topsoftp.com/sfd/storage/app/" +
+                                                project.file.toString()));
                                     // Get.to(() =>
                                     //     council());
                                   },
                                 ),
                               ],
                             ),
-                          ],),
-                        );
-                      }
+                          ],
+                        ),
+                      );
                     }
-
-
-                  },
-                    child: MediumText(text: project.name,color: Colors.black,)),
-                // MediumText(text: project.sector.name,color: Colors.black,),
-                Container(
-                  // padding:
-                  //     const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                  // decoration: BoxDecoration(
-                  //   color: Colors.blue.shade900,
-                  //   borderRadius: BorderRadius.circular(10),
-                  // ),
-                  child: TextButton(
-                    onPressed: () {
-                      Get.find<AreaController>().getAreaById(project.area.id);
-                      Get.to(() => area());
-                    },
-                    child: Text(
-                      'المنطقه'+' : - '+  project.area.name,
-                      style:  TextStyle(
-                          color: Colors.blue.shade900,
-                          fontFamily: 'NotoKufiArabic'
-                          ,fontSize: 13
-                      ),
-                    ),
-                  ),
-                ),
-
-                Row(children: [
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(children: [
-                    SmallText(text: project.plan.publishData.substring(0,10), color: Colors.black),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    // MediumText(text: project.sector.name,color: Colors.black,),
-                    SmallText(text: project.plan.name, color: Colors.black),
-                  ]),
-                  SizedBox(
-                    width: 0,
-                  ),
-                ]),
-                const SizedBox(
-                  height: 5,
-                ),
-
-                const SizedBox(
-                  width: 10,
-                ),
-
-              ],
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-
+                  }
+                },
+                child: MediumText(
+                  text: project.name,
+                  color: Colors.black,
+                )),
+            // MediumText(text: project.sector.name,color: Colors.black,),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              width: 90,
-              height: 90,
-              decoration:  BoxDecoration(
-                // borderRadius: BorderRadius.circular(10),
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image:AssetImage('assets/sfd.jpg') ,
-                  // NetworkImage(project.plan.image),
-                  fit: BoxFit.cover,
+              // padding:
+              //     const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+              // decoration: BoxDecoration(
+              //   color: Colors.blue.shade900,
+              //   borderRadius: BorderRadius.circular(10),
+              // ),
+              child: TextButton(
+                onPressed: () {
+                  Get.find<AreaController>().getAreaById(project.area.id);
+                  Get.to(() => area());
+                },
+                child: Text(
+                  'المنطقه' + ' : - ' + project.area.name,
+                  style: TextStyle(
+                      color: Colors.blue.shade900,
+                      fontFamily: 'NotoKufiArabic',
+                      fontSize: 13),
                 ),
               ),
             ),
-          ]),);
+
+            Row(children: [
+              SizedBox(
+                height: 5,
+              ),
+              Row(children: [
+                SmallText(
+                    text: project.plan.publishData.substring(0, 10),
+                    color: Colors.black),
+                SizedBox(
+                  width: 5,
+                ),
+                // MediumText(text: project.sector.name,color: Colors.black,),
+                SmallText(text: project.plan.name, color: Colors.black),
+              ]),
+              SizedBox(
+                width: 0,
+              ),
+            ]),
+            const SizedBox(
+              height: 5,
+            ),
+
+            const SizedBox(
+              width: 10,
+            ),
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          width: 90,
+          height: 90,
+          decoration: BoxDecoration(
+            // borderRadius: BorderRadius.circular(10),
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: AssetImage('assets/sfd.jpg'),
+              // NetworkImage(project.plan.image),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ]),
+    );
   }
 
   Widget storeCardFeatured(Sector sector) {
@@ -634,8 +649,11 @@ class HomePage extends StatelessWidget {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 80),
-                              child: Text(
-                                   sector.name, style:TextStyle(color:Colors.white, fontFamily: 'NotoKufiArabic',fontSize: 16)),
+                              child: Text(sector.name,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'NotoKufiArabic',
+                                      fontSize: 16)),
                             ),
                           )
                         ],
@@ -653,82 +671,39 @@ class HomePage extends StatelessWidget {
 
   Widget storeCardFeatured2(Sector sector) {
     return InkWell(
-      onTap: (){
-        Get.find<ProjectController>().getProjectsBySector(sector.id);
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+        onTap: () {
+          Get.find<ProjectController>().getProjectsBySector(sector.id);
+        },
         child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100.0),
+          shape: const RoundedRectangleBorder(
+            side: BorderSide(color: Colors.black38),
+            borderRadius: BorderRadius.all(Radius.circular(300)),
           ),
           child: Container(
+            // margin: const EdgeInsets.symmetric(horizontal: 10),
+            alignment: Alignment.center,
             width: 100,
-            height: 200,
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                color: Colors.grey.shade200),
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  left: 5,
-                  child: Container(
-
-                    width: 70,
-                    height: 90,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(
-                            50,
-                          ),
-                          bottomLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50)),
-                      image: DecorationImage(
-                        image: AssetImage('assets/2.jpg'),
-                        fit: BoxFit.cover,
-                      ),
+            height: 50,
+            child: Center(
+              child: ListTile(
+                title: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    sector.name,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'NotoKufiArabic',
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 2,
-
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  sector.name,
-                                  style: TextStyle(
-                                    color: Colors.blue.shade900,
-                                    fontFamily: 'NotoKufiArabic',
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
+
 Future<void> _launchUrl(Uri _url) async {
   if (!await launchUrl(_url)) {
     throw Exception('Could not launch $_url');
