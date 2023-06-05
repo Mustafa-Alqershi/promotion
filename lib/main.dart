@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:promotion/view/widget/home/HomeBottom.dart';
@@ -13,9 +15,19 @@ import 'dependincies.dart'as dep;
 //       ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
 //   }
 // }
+class PostHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 Future<void> main() async {
   // HttpOverrides.global = new PostHttpOverrides();
   //
+  HttpOverrides.global = new PostHttpOverrides();
+
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
   Get.put(HomeScreenControllerImp());
