@@ -309,6 +309,76 @@ class HomePage extends StatelessWidget {
                       icon: Icon(Icons.menu_open,
                           size: 30, color: Colors.blue.shade900),
                       onPressed: () {
+                        var login =GetStorage().read('login')??false;
+                        var type =GetStorage().read('type')??"";
+                        if(login==true){
+                          if(type=="investor") {
+                            Get.defaultDialog(
+                              title: '',
+                              backgroundColor: Colors.blue.shade900,
+                              content: Column(children: [
+                                const Text(
+                                  '',
+                                  textAlign:
+                                  TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily:
+                                    'NotoKufiArabic',
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    TextButton(
+                                      child:  Text(
+                                        '49'.tr,
+                                        textAlign:
+                                        TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily:
+                                            'NotoKufiArabic',
+                                            color: Colors
+                                                .white),
+                                      ),
+                                      onPressed: () {
+                                        var url = Uri.parse('mailto:${project
+                                            .email}?subject=News&body=مرحبا');
+                                        _launchUrl(url);
+                                        // Get.find<LocalController>().getLocaleByArea(project.area.id);
+                                        // Get.to(() =>
+                                        //     council());
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    TextButton(
+                                      child:  Text(
+                                        '50'.tr,
+                                        textAlign:
+                                        TextAlign
+                                            .center,
+                                        style: TextStyle(
+                                            fontFamily:
+                                            'NotoKufiArabic',
+                                            color: Colors.white),
+                                      ),
+                                      onPressed: () {
+                                        print(project.file.toString());
+                                        Get.to(PDFScreen(
+                                            path: "https://topsoftp.com/sfd/storage/app/" +
+                                                project.file.toString()));
+                                        // Get.to(() =>
+                                        //     council());
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],),
+                            );
+                          }
+                        }
                         Get.defaultDialog(
                           content: Column(
                             children: [],
